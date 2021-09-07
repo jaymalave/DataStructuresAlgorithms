@@ -64,6 +64,8 @@ void deleteAtHead(node* &head){
 
 //deleting an element at any position
 void deletion(node* &head, int val){
+
+    //adding base cases
     if(head == NULL){
         return;
     }
@@ -81,6 +83,33 @@ void deletion(node* &head, int val){
     delete toDelete;
 }
 
+//reversing a linked list-iterative way
+node* reverseIter(node* &head){
+    node* prevptr = NULL;
+    node* currptr = head;
+    node* nextptr;
+
+    while(currptr != NULL){
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+    }
+    return prevptr;
+}
+
+//reversing a linked list-recursive way
+node* reverseRecur(node* &head){
+   //adding base cases
+   if(head == NULL || head->next == NULL){
+       return head;
+   }
+   node* newhead = reverseRecur(head->next);
+   head->next->next = head;
+   head->next = NULL;
+   return newhead;
+}
+
 int main(){
     cout<<"Linked List Program"<<endl;
     node* head = NULL;
@@ -89,6 +118,8 @@ int main(){
     insertAtTail(head, 3);
     insertAtHead(head, 4);
     deletion(head, 3);
+    // reverseIter(head);
+    //reverseRecur(head);
     display(head);
     if (search(head, 3) == true){
         cout<<'1'<<endl;
