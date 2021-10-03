@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
 class node{
@@ -17,8 +18,8 @@ class queue{
     node* back;
 
     public: 
-    queue(){
-        front=NULL:
+    void queue(){
+        front=NULL;
         back=NULL;
     }
     void push(int x){
