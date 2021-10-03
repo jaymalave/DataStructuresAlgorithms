@@ -30,7 +30,17 @@ class stack{
          top->next=n;
          top=n;
      }
-     void pop(){}
+     void pop(){
+        if(top==NULL){
+             cout<<"Stack empty"<<endl;
+             return;
+         }
+         node* temp;
+         temp = top;
+         top = top->next;
+         temp->next = NULL;
+         delete temp;
+     }
      int topVal(){
          if(top==NULL){
              cout<<"Stack empty"<<endl;
